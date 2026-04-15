@@ -38,17 +38,19 @@ const FadeIn = ({ children, delay = 0, className = "" }: { children: React.React
 
 // ─── ДАННЫЕ ───────────────────────────────────────────────────────────────────
 
+const DMITRY_PHOTO = "https://cdn.poehali.dev/projects/756e28ae-f342-42b1-ab53-44233856dec1/bucket/6e2df17f-042f-4f94-95b3-dfc3557a23c0.png";
+
 const INSTRUCTORS_MAIN = [
-  { name: "Алексей\nЧеремных", img: "https://static.tildacdn.com/tild3561-3236-4035-a232-333266336139/photo.png" },
-  { name: "Мария\nСветлова", img: "https://static.tildacdn.com/tild6261-3136-4265-b665-376634613365/photo.png" },
-  { name: "Дмитрий\nКоваль", img: "https://static.tildacdn.com/tild3237-6632-4361-b033-343464303535/photo.png" },
-  { name: "Анна\nБерёзова", img: "https://static.tildacdn.com/tild3564-6434-4661-b535-323930303565/photo.png" },
-  { name: "Иван\nПетров", img: "https://static.tildacdn.com/tild6164-3861-4362-b336-633136623034/photo.png" },
-  { name: "Ольга\nМорозова", img: "https://static.tildacdn.com/tild6163-3062-4265-b431-633465643537/photo.png" },
-  { name: "Сергей\nВолков", img: "https://static.tildacdn.com/tild3766-3039-4535-b764-633762653934/photo.png" },
-  { name: "Наталья\nЛебедева", img: "https://static.tildacdn.com/tild6165-3163-4034-b032-356561383439/photo.png" },
-  { name: "Павел\nСоколов", img: "https://static.tildacdn.com/tild3132-6235-4237-b034-656435626335/photo.png" },
-  { name: "Елена\nКузнецова", img: "https://static.tildacdn.com/tild6264-3131-4533-b231-393763323361/photo.png" },
+  { name: "Дмитрий\nХара", img: DMITRY_PHOTO },
+  { name: "Мария\nСветлова", img: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=120&q=80" },
+  { name: "Анна\nБерёзова", img: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=120&q=80" },
+  { name: "Иван\nПетров", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&q=80" },
+  { name: "Ольга\nМорозова", img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=120&q=80" },
+  { name: "Сергей\nВолков", img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=120&q=80" },
+  { name: "Наталья\nЛебедева", img: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=120&q=80" },
+  { name: "Павел\nСоколов", img: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=120&q=80" },
+  { name: "Елена\nКузнецова", img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&q=80" },
+  { name: "Алина\nФёдорова", img: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=120&q=80" },
 ];
 
 const ELEMENTS_16 = [
@@ -82,18 +84,18 @@ const AFTER_MEDITATION = [
 ];
 
 const INSTRUCTORS_FULL = [
-  { name: "Алексей Черемных", city: "Москва", role: "Основатель метода", img: "https://static.tildacdn.com/tild3561-3236-4035-a232-333266336139/photo.png", tg: "#", ig: "#" },
-  { name: "Мария Светлова", city: "Санкт-Петербург", role: "Инструктор", img: "https://static.tildacdn.com/tild6261-3136-4265-b665-376634613365/photo.png", tg: "#", ig: "#" },
-  { name: "Дмитрий Коваль", city: "Екатеринбург", role: "Инструктор", img: "https://static.tildacdn.com/tild3237-6632-4361-b033-343464303535/photo.png", tg: "#", ig: "#" },
-  { name: "Анна Берёзова", city: "Новосибирск", role: "Инструктор", img: "https://static.tildacdn.com/tild3564-6434-4661-b535-323930303565/photo.png", tg: "#", ig: "#" },
-  { name: "Иван Петров", city: "Казань", role: "Инструктор", img: "https://static.tildacdn.com/tild6164-3861-4362-b336-633136623034/photo.png", tg: "#", ig: "#" },
-  { name: "Ольга Морозова", city: "Краснодар", role: "Инструктор", img: "https://static.tildacdn.com/tild6163-3062-4265-b431-633465643537/photo.png", tg: "#", ig: "#" },
-  { name: "Сергей Волков", city: "Воронеж", role: "Инструктор", img: "https://static.tildacdn.com/tild3766-3039-4535-b764-633762653934/photo.png", tg: "#", ig: "#" },
-  { name: "Наталья Лебедева", city: "Самара", role: "Инструктор", img: "https://static.tildacdn.com/tild6165-3163-4034-b032-356561383439/photo.png", tg: "#", ig: "#" },
-  { name: "Павел Соколов", city: "Уфа", role: "Инструктор", img: "https://static.tildacdn.com/tild3132-6235-4237-b034-656435626335/photo.png", tg: "#", ig: "#" },
-  { name: "Елена Кузнецова", city: "Ростов-на-Дону", role: "Инструктор", img: "https://static.tildacdn.com/tild6264-3131-4533-b231-393763323361/photo.png", tg: "#", ig: "#" },
-  { name: "Виктор Орлов", city: "Пермь", role: "Инструктор", img: "", tg: "#", ig: "#" },
-  { name: "Светлана Жукова", city: "Омск", role: "Инструктор", img: "", tg: "#", ig: "#" },
+  { name: "Дмитрий Хара", city: "Москва", role: "Основатель метода", img: DMITRY_PHOTO, tg: "#", ig: "#" },
+  { name: "Мария Светлова", city: "Санкт-Петербург", role: "Инструктор", img: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&q=80", tg: "#", ig: "#" },
+  { name: "Анна Берёзова", city: "Новосибирск", role: "Инструктор", img: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=400&q=80", tg: "#", ig: "#" },
+  { name: "Иван Петров", city: "Казань", role: "Инструктор", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80", tg: "#", ig: "#" },
+  { name: "Ольга Морозова", city: "Краснодар", role: "Инструктор", img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80", tg: "#", ig: "#" },
+  { name: "Сергей Волков", city: "Воронеж", role: "Инструктор", img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80", tg: "#", ig: "#" },
+  { name: "Наталья Лебедева", city: "Самара", role: "Инструктор", img: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80", tg: "#", ig: "#" },
+  { name: "Павел Соколов", city: "Уфа", role: "Инструктор", img: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80", tg: "#", ig: "#" },
+  { name: "Елена Кузнецова", city: "Ростов-на-Дону", role: "Инструктор", img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&q=80", tg: "#", ig: "#" },
+  { name: "Алина Фёдорова", city: "Пермь", role: "Инструктор", img: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400&q=80", tg: "#", ig: "#" },
+  { name: "Виктор Орлов", city: "Екатеринбург", role: "Инструктор", img: "https://images.unsplash.com/photo-1463453091185-61582044d556?w=400&q=80", tg: "#", ig: "#" },
+  { name: "Светлана Жукова", city: "Омск", role: "Инструктор", img: "https://images.unsplash.com/photo-1506863530036-1efeddceb993?w=400&q=80", tg: "#", ig: "#" },
 ];
 
 const NAV = [
@@ -177,78 +179,109 @@ export default function Index() {
       </nav>
 
       {/* ══════════ HERO ══════════ */}
-      <section className="relative min-h-screen flex flex-col items-center justify-center text-center overflow-hidden">
-        {/* Фоновое изображение — горы и облака */}
+      <section className="relative min-h-screen flex flex-col overflow-hidden">
+        {/* Фон — горы */}
         <div className="absolute inset-0">
           <img
             src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&q=80"
             alt="горы"
             className="w-full h-full object-cover"
-            style={{ filter: "brightness(0.55) saturate(1.1)" }}
+            style={{ filter: "brightness(0.45) saturate(1.1)" }}
           />
-          <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(0,20,40,0.3) 0%, rgba(0,10,30,0.15) 40%, rgba(0,10,30,0.6) 80%, #0a0e1a 100%)" }} />
-          {/* Мистический свет сверху */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] pointer-events-none"
-            style={{ background: "radial-gradient(ellipse, rgba(120,200,255,0.25) 0%, transparent 70%)" }} />
+          <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(0,10,25,0.35) 0%, rgba(0,8,20,0.1) 35%, rgba(0,8,20,0.55) 75%, #0a0e1a 100%)" }} />
+          {/* Свет под фигуру справа */}
+          <div className="absolute bottom-0 right-0 w-[55%] h-full pointer-events-none"
+            style={{ background: "linear-gradient(to left, rgba(0,0,0,0.0) 0%, rgba(0,8,20,0.5) 100%)" }} />
         </div>
 
-        <div className="relative z-10 px-4 max-w-4xl mx-auto pt-20">
-          <div style={{ opacity: 0, animation: "fade-in 1s ease 0.3s forwards" }}>
-            <h1 className="font-display mb-4 leading-none tracking-widest"
-              style={{ fontFamily: "'Oswald', sans-serif", fontSize: "clamp(72px, 16vw, 180px)", fontWeight: 700, color: "#fff", textShadow: "0 0 60px rgba(100,180,255,0.4)", letterSpacing: "0.08em" }}>
-              ШОДХАН
-            </h1>
-          </div>
-          <div style={{ opacity: 0, animation: "fade-in 0.9s ease 0.6s forwards" }}>
-            <p className="text-base md:text-xl font-medium mb-2 tracking-wide"
-              style={{ fontFamily: "'Montserrat', sans-serif", color: "rgba(255,255,255,0.92)", textShadow: "0 2px 10px rgba(0,0,0,0.5)" }}>
-              Активная медитация первоэлементов
-            </p>
-            <p className="text-sm md:text-base mb-10" style={{ color: "rgba(255,255,255,0.65)" }}>
-              Шодхан в твоём городе! Выбери своего инструктора
-            </p>
-          </div>
+        {/* Фото Дмитрия — правая сторона, во весь рост */}
+        <div className="absolute bottom-0 right-0 z-10 pointer-events-none"
+          style={{
+            width: "clamp(280px, 45vw, 620px)",
+            opacity: 0,
+            animation: "fade-in 1s ease 0.4s forwards",
+          }}>
+          <img
+            src={DMITRY_PHOTO}
+            alt="Дмитрий Хара"
+            className="w-full object-contain object-bottom"
+            style={{ maxHeight: "92vh" }}
+          />
+          {/* Свечение под фигурой */}
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4/5 h-32 pointer-events-none"
+            style={{ background: "radial-gradient(ellipse, rgba(92,184,110,0.18) 0%, transparent 70%)" }} />
+        </div>
 
-          {/* Круглые фото инструкторов */}
-          <div style={{ opacity: 0, animation: "fade-in 0.9s ease 0.9s forwards" }}>
-            <div className="flex flex-wrap justify-center gap-3 mb-10">
-              {INSTRUCTORS_MAIN.slice(0, 10).map((ins, i) => (
-                <div key={i} className="flex flex-col items-center gap-1.5 group cursor-pointer">
-                  <div className="rounded-full overflow-hidden transition-transform duration-300 group-hover:scale-110"
-                    style={{ width: 60, height: 60, border: "2px solid rgba(255,255,255,0.4)", boxShadow: "0 4px 16px rgba(0,0,0,0.4)" }}>
-                    <img src={ins.img} alt={ins.name}
-                      className="w-full h-full object-cover"
-                      onError={e => { (e.currentTarget as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${encodeURIComponent(ins.name.replace('\n',' '))}&background=2d4a2d&color=fff&size=60`; }} />
-                  </div>
-                  <span className="text-center whitespace-pre-line leading-tight"
-                    style={{ fontSize: "9px", color: "rgba(255,255,255,0.7)", fontFamily: "'Montserrat', sans-serif" }}>
-                    {ins.name}
-                  </span>
-                </div>
-              ))}
+        {/* Контент — левая сторона */}
+        <div className="relative z-20 flex flex-col justify-center min-h-screen px-6 md:px-16 max-w-2xl">
+          <div className="pt-24">
+            <div style={{ opacity: 0, animation: "fade-in 0.9s ease 0.2s forwards" }}>
+              <p className="text-xs font-semibold tracking-widest uppercase mb-3"
+                style={{ fontFamily: "'Oswald',sans-serif", color: "#5cb86e", letterSpacing: "0.2em" }}>
+                Авторский метод
+              </p>
+              <h1 className="font-display leading-none mb-4"
+                style={{ fontFamily: "'Oswald', sans-serif", fontSize: "clamp(70px, 14vw, 160px)", fontWeight: 700, color: "#fff", textShadow: "0 0 80px rgba(92,184,110,0.2)", letterSpacing: "0.05em" }}>
+                ШОДХАН
+              </h1>
             </div>
-          </div>
+            <div style={{ opacity: 0, animation: "fade-in 0.9s ease 0.55s forwards" }}>
+              <p className="text-base md:text-xl font-medium mb-2"
+                style={{ fontFamily: "'Montserrat', sans-serif", color: "rgba(255,255,255,0.88)" }}>
+                Активная медитация первоэлементов
+              </p>
+              <p className="text-sm mb-2" style={{ color: "rgba(255,255,255,0.55)" }}>
+                Автор метода — <strong style={{ color: "rgba(255,255,255,0.8)" }}>Дмитрий Хара</strong>
+              </p>
+              <p className="text-sm mb-8" style={{ color: "rgba(255,255,255,0.5)" }}>
+                Шодхан в твоём городе! Выбери своего инструктора
+              </p>
+            </div>
 
-          <div className="flex flex-col sm:flex-row gap-3 justify-center"
-            style={{ opacity: 0, animation: "fade-in 0.9s ease 1.1s forwards" }}>
-            <a href="#about"
-              className="px-8 py-3.5 rounded-full font-semibold text-sm tracking-widest uppercase transition-all duration-300 hover:scale-105"
-              style={{ background: "linear-gradient(135deg,#3a8f4a,#5cb86e)", color: "#fff", boxShadow: "0 6px 24px rgba(60,150,80,0.45)" }}>
-              Узнать о методе
-            </a>
-            <a href="#instructors"
-              className="px-8 py-3.5 rounded-full font-medium text-sm tracking-widest uppercase transition-all duration-300 hover:scale-105"
-              style={{ border: "1px solid rgba(255,255,255,0.4)", color: "#fff", backdropFilter: "blur(8px)", background: "rgba(255,255,255,0.08)" }}>
-              Выбрать инструктора
-            </a>
+            <div className="flex flex-col sm:flex-row gap-3 mb-12"
+              style={{ opacity: 0, animation: "fade-in 0.9s ease 0.8s forwards" }}>
+              <a href="#about"
+                className="px-8 py-3.5 rounded-full font-semibold text-sm tracking-widest uppercase transition-all duration-300 hover:scale-105 text-center"
+                style={{ background: "linear-gradient(135deg,#3a8f4a,#5cb86e)", color: "#fff", boxShadow: "0 6px 24px rgba(60,150,80,0.45)" }}>
+                Узнать о методе
+              </a>
+              <a href="#instructors"
+                className="px-8 py-3.5 rounded-full font-medium text-sm tracking-widest uppercase transition-all duration-300 hover:scale-105 text-center"
+                style={{ border: "1px solid rgba(255,255,255,0.35)", color: "#fff", backdropFilter: "blur(8px)", background: "rgba(255,255,255,0.07)" }}>
+                Выбрать инструктора
+              </a>
+            </div>
+
+            {/* Круглые фото инструкторов */}
+            <div style={{ opacity: 0, animation: "fade-in 0.9s ease 1s forwards" }}>
+              <p className="text-xs mb-3" style={{ color: "rgba(255,255,255,0.35)", fontFamily: "'Montserrat',sans-serif", letterSpacing: "0.08em" }}>
+                ИНСТРУКТОРЫ
+              </p>
+              <div className="flex flex-wrap gap-3">
+                {INSTRUCTORS_MAIN.slice(0, 9).map((ins, i) => (
+                  <div key={i} className="flex flex-col items-center gap-1 group cursor-pointer">
+                    <div className="rounded-full overflow-hidden transition-transform duration-300 group-hover:scale-110"
+                      style={{ width: 50, height: 50, border: "2px solid rgba(255,255,255,0.3)", boxShadow: "0 3px 12px rgba(0,0,0,0.5)" }}>
+                      <img src={ins.img} alt={ins.name}
+                        className="w-full h-full object-cover object-top"
+                        onError={e => { (e.currentTarget as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${encodeURIComponent(ins.name.replace('\n',' '))}&background=1a3a22&color=5cb86e&size=50`; }} />
+                    </div>
+                    <span className="text-center whitespace-pre-line leading-tight"
+                      style={{ fontSize: "8px", color: "rgba(255,255,255,0.55)", fontFamily: "'Montserrat', sans-serif" }}>
+                      {ins.name}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
 
         {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-          style={{ opacity: 0, animation: "fade-in 1s ease 1.5s forwards", color: "rgba(255,255,255,0.35)" }}>
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-20"
+          style={{ opacity: 0, animation: "fade-in 1s ease 1.5s forwards", color: "rgba(255,255,255,0.3)" }}>
           <div className="w-px h-10 animate-pulse"
-            style={{ background: "linear-gradient(to bottom, rgba(255,255,255,0.5), transparent)" }} />
+            style={{ background: "linear-gradient(to bottom, rgba(255,255,255,0.4), transparent)" }} />
         </div>
       </section>
 
@@ -322,16 +355,17 @@ export default function Index() {
           <FadeIn delay={0.1} className="mt-16">
             <div className="rounded-2xl p-8 flex flex-col md:flex-row items-center gap-8"
               style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)" }}>
-              <div className="rounded-full overflow-hidden shrink-0" style={{ width: 120, height: 120, border: "3px solid rgba(92,184,110,0.5)" }}>
-                <img src="https://static.tildacdn.com/tild3561-3236-4035-a232-333266336139/photo.png"
-                  alt="Алексей Черемных"
-                  className="w-full h-full object-cover"
-                  onError={e => { (e.currentTarget as HTMLImageElement).src = `https://ui-avatars.com/api/?name=АЧ&background=2d4a2d&color=fff&size=120`; }} />
+              <div className="rounded-full overflow-hidden shrink-0" style={{ width: 120, height: 120, border: "3px solid rgba(92,184,110,0.5)", background: "#0d1a10" }}>
+                <img src={DMITRY_PHOTO}
+                  alt="Дмитрий Хара"
+                  className="w-full h-full object-cover object-top"
+                  style={{ objectPosition: "center 10%" }}
+                  onError={e => { (e.currentTarget as HTMLImageElement).src = `https://ui-avatars.com/api/?name=ДХ&background=2d4a2d&color=fff&size=120`; }} />
               </div>
               <div>
                 <p className="text-xs tracking-widest uppercase mb-1" style={{ color: "#5cb86e", fontFamily: "'Oswald',sans-serif" }}>Основатель метода</p>
                 <h3 className="font-display text-2xl font-bold mb-3" style={{ fontFamily: "'Oswald',sans-serif", color: "#fff", letterSpacing: "0.05em" }}>
-                  АЛЕКСЕЙ ЧЕРЕМНЫХ
+                  ДМИТРИЙ ХАРА
                 </h3>
                 <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.65)" }}>
                   Более 15 лет изучения и практики медитации. Создал метод Шодхан как синтез
