@@ -1,0 +1,411 @@
+import Icon from "@/components/ui/icon";
+import FadeIn from "./FadeIn";
+import { DMITRY_PHOTO, ELEMENTS_16, AFTER_MEDITATION, INSTRUCTORS_FULL } from "./shared";
+
+export default function AboutSection() {
+  return (
+    <>
+      {/* ══════════ ЧТО ТАКОЕ ШОДХАН ══════════ */}
+      <section id="about" className="py-24 px-5 relative overflow-hidden"
+        style={{ background: "linear-gradient(180deg,#0a0e1a 0%,#0d1520 50%,#0a1a0f 100%)" }}>
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 right-0 w-96 h-96 rounded-full opacity-10"
+            style={{ background: "radial-gradient(ellipse,#1a6b2a,transparent)" }} />
+          <div className="absolute bottom-0 left-0 w-80 h-80 rounded-full opacity-8"
+            style={{ background: "radial-gradient(ellipse,#0a3a6b,transparent)" }} />
+        </div>
+
+        <div className="max-w-6xl mx-auto relative z-10">
+          <FadeIn className="text-center mb-16">
+            <h2 className="font-display mb-4"
+              style={{ fontFamily: "'Oswald', sans-serif", fontSize: "clamp(32px,5vw,56px)", fontWeight: 700, color: "#fff", letterSpacing: "0.08em", textTransform: "uppercase" }}>
+              ЧТО ТАКОЕ ШОДХАН?
+            </h2>
+            <div className="w-20 h-1 mx-auto rounded-full" style={{ background: "linear-gradient(90deg,#3a8f4a,#5cb86e)" }} />
+          </FadeIn>
+
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <FadeIn>
+              <p className="text-base leading-loose mb-5" style={{ color: "rgba(255,255,255,0.75)" }}>
+                <strong style={{ color: "#5cb86e" }}>Шодхан</strong> — это уникальный метод активной медитации,
+                разработанный специально для современного человека. Название происходит от санскритского слова,
+                означающего «очищение».
+              </p>
+              <p className="text-base leading-loose mb-5" style={{ color: "rgba(255,255,255,0.75)" }}>
+                В отличие от традиционной медитации, где нужно «отключить» ум усилием воли, Шодхан
+                работает через активное взаимодействие с первоэлементами: землёй, водой, огнём, воздухом и эфиром.
+              </p>
+              <p className="text-base leading-loose mb-8" style={{ color: "rgba(255,255,255,0.75)" }}>
+                Практика включает движение, дыхание, голос, звук и медитативное погружение — всё это
+                вместе создаёт мощный инструмент трансформации сознания.
+              </p>
+              <a href="#contact"
+                className="inline-block px-8 py-3.5 rounded-full font-semibold text-sm tracking-widest uppercase transition-all duration-300 hover:scale-105"
+                style={{ background: "linear-gradient(135deg,#3a8f4a,#5cb86e)", color: "#fff" }}>
+                Попробовать
+              </a>
+            </FadeIn>
+
+            <FadeIn delay={0.2}>
+              <div className="relative rounded-2xl overflow-hidden cursor-pointer group"
+                style={{ aspectRatio: "16/9", background: "linear-gradient(135deg,#0d2a15,#0a1a30)" }}>
+                <img
+                  src="https://images.unsplash.com/photo-1545389336-cf090694435e?w=800&q=80"
+                  alt="Медитация Шодхан"
+                  className="w-full h-full object-cover opacity-70 group-hover:opacity-85 transition-opacity duration-400"
+                />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-18 h-18 rounded-full flex items-center justify-center transition-transform duration-300 group-hover:scale-110"
+                    style={{ width: 72, height: 72, background: "rgba(255,255,255,0.15)", backdropFilter: "blur(8px)", border: "2px solid rgba(255,255,255,0.4)" }}>
+                    <Icon name="Play" size={28} />
+                  </div>
+                </div>
+                <div className="absolute bottom-4 left-4 right-4">
+                  <p className="text-sm font-medium" style={{ color: "rgba(255,255,255,0.9)", fontFamily: "'Montserrat',sans-serif" }}>
+                    Смотреть видео о методе
+                  </p>
+                </div>
+              </div>
+            </FadeIn>
+          </div>
+
+          {/* Основатель */}
+          <FadeIn delay={0.1} className="mt-16">
+            <div className="rounded-2xl p-8 flex flex-col md:flex-row items-center gap-8"
+              style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)" }}>
+              <div className="rounded-full overflow-hidden shrink-0" style={{ width: 120, height: 120, border: "3px solid rgba(92,184,110,0.5)", background: "#0d1a10" }}>
+                <img src={DMITRY_PHOTO}
+                  alt="Дмитрий Хара"
+                  className="w-full h-full object-cover object-top"
+                  style={{ objectPosition: "center 10%" }}
+                  onError={e => { (e.currentTarget as HTMLImageElement).src = `https://ui-avatars.com/api/?name=ДХ&background=2d4a2d&color=fff&size=120`; }} />
+              </div>
+              <div>
+                <p className="text-xs tracking-widest uppercase mb-1" style={{ color: "#5cb86e", fontFamily: "'Oswald',sans-serif" }}>Основатель метода</p>
+                <h3 className="font-display text-2xl font-bold mb-3" style={{ fontFamily: "'Oswald',sans-serif", color: "#fff", letterSpacing: "0.05em" }}>
+                  ДМИТРИЙ ХАРА
+                </h3>
+                <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.65)" }}>
+                  Более 15 лет изучения и практики медитации. Создал метод Шодхан как синтез
+                  древних традиций и современного понимания психологии и нейронауки.
+                  Провёл сотни семинаров и обучил тысячи практикующих по всей России и миру.
+                </p>
+              </div>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* ══════════ КАРТА МИРА ══════════ */}
+      <section className="py-16 px-5 relative overflow-hidden"
+        style={{ background: "linear-gradient(180deg,#0a1a0f,#081218)" }}>
+        <div className="max-w-5xl mx-auto text-center">
+          <FadeIn>
+            <h2 className="font-display mb-3"
+              style={{ fontFamily: "'Oswald',sans-serif", fontSize: "clamp(28px,4vw,48px)", fontWeight: 700, color: "#fff", letterSpacing: "0.08em", textTransform: "uppercase" }}>
+              ШОДХАН В ТВОЁМ ГОРОДЕ
+            </h2>
+            <p className="text-sm mb-10" style={{ color: "rgba(255,255,255,0.55)" }}>
+              Инструкторы Шодхан уже работают в десятках городов России и СНГ
+            </p>
+          </FadeIn>
+          <FadeIn delay={0.15}>
+            <div className="relative rounded-2xl overflow-hidden"
+              style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)" }}>
+              <img
+                src="https://images.unsplash.com/photo-1589519160732-57fc498494f8?w=1200&q=70"
+                alt="Карта мира"
+                className="w-full object-cover opacity-40"
+                style={{ height: 320 }}
+              />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-center">
+                  <div className="font-display text-6xl font-bold mb-2"
+                    style={{ fontFamily: "'Oswald',sans-serif", color: "#5cb86e" }}>20+</div>
+                  <div className="text-lg font-medium" style={{ color: "rgba(255,255,255,0.8)" }}>городов присутствия</div>
+                </div>
+              </div>
+              {[
+                { top: "35%", left: "55%", city: "Москва" },
+                { top: "30%", left: "54%", city: "СПб" },
+                { top: "38%", left: "60%", city: "Екб" },
+                { top: "42%", left: "62%", city: "Новосиб" },
+                { top: "45%", left: "63%", city: "Омск" },
+                { top: "40%", left: "58%", city: "Казань" },
+              ].map((dot, i) => (
+                <div key={i} className="absolute" style={{ top: dot.top, left: dot.left, transform: "translate(-50%,-50%)" }}>
+                  <div className="relative">
+                    <div className="w-3 h-3 rounded-full animate-pulse"
+                      style={{ background: "#5cb86e", boxShadow: "0 0 12px #5cb86e" }} />
+                    <span className="absolute top-4 left-1/2 -translate-x-1/2 whitespace-nowrap text-center"
+                      style={{ fontSize: "8px", color: "rgba(255,255,255,0.7)" }}>
+                      {dot.city}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* ══════════ 16 ЭЛЕМЕНТОВ ══════════ */}
+      <section id="elements" className="py-24 px-5 relative"
+        style={{ background: "linear-gradient(180deg,#081218,#0a0e1a)" }}>
+        <div className="max-w-6xl mx-auto">
+          <FadeIn className="text-center mb-16">
+            <h2 className="font-display mb-4"
+              style={{ fontFamily: "'Oswald',sans-serif", fontSize: "clamp(32px,5vw,56px)", fontWeight: 700, color: "#fff", letterSpacing: "0.08em", textTransform: "uppercase" }}>
+              ПРАКТИКИ МЕДИТАЦИИ
+            </h2>
+            <div className="w-20 h-1 mx-auto rounded-full" style={{ background: "linear-gradient(90deg,#3a8f4a,#5cb86e)" }} />
+          </FadeIn>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {ELEMENTS_16.map((el, i) => (
+              <FadeIn key={i} delay={(i % 4) * 0.07}>
+                <div className="rounded-xl p-5 group transition-all duration-300 hover:-translate-y-1"
+                  style={{
+                    background: "linear-gradient(145deg,rgba(20,35,25,0.9),rgba(10,18,30,0.85))",
+                    border: "1px solid rgba(92,184,110,0.12)",
+                  }}
+                  onMouseEnter={e => (e.currentTarget.style.borderColor = "rgba(92,184,110,0.35)")}
+                  onMouseLeave={e => (e.currentTarget.style.borderColor = "rgba(92,184,110,0.12)")}>
+                  <div className="flex items-start gap-3 mb-2">
+                    <span className="font-display font-bold text-3xl leading-none"
+                      style={{ fontFamily: "'Oswald',sans-serif", color: "rgba(92,184,110,0.3)", lineHeight: 1 }}>
+                      {el.n}
+                    </span>
+                    <h3 className="font-display font-semibold text-base pt-1"
+                      style={{ fontFamily: "'Oswald',sans-serif", color: "#fff", letterSpacing: "0.05em", textTransform: "uppercase" }}>
+                      {el.title}
+                    </h3>
+                  </div>
+                  <p className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.5)" }}>
+                    {el.desc}
+                  </p>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════ ПОСЛЕ МЕДИТАЦИИ ══════════ */}
+      <section id="after" className="py-24 px-5 relative overflow-hidden"
+        style={{ background: "linear-gradient(180deg,#0a0e1a,#0a1a0f)" }}>
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-8"
+            style={{ background: "radial-gradient(ellipse,#1a6b2a,transparent)" }} />
+        </div>
+        <div className="max-w-5xl mx-auto relative z-10">
+          <FadeIn className="text-center mb-16">
+            <h2 className="font-display mb-4"
+              style={{ fontFamily: "'Oswald',sans-serif", fontSize: "clamp(32px,5vw,56px)", fontWeight: 700, color: "#fff", letterSpacing: "0.08em", textTransform: "uppercase" }}>
+              ПОСЛЕ МЕДИТАЦИИ ТЫ
+            </h2>
+            <div className="w-20 h-1 mx-auto rounded-full" style={{ background: "linear-gradient(90deg,#3a8f4a,#5cb86e)" }} />
+          </FadeIn>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+            {AFTER_MEDITATION.map((item, i) => (
+              <FadeIn key={i} delay={i * 0.06}>
+                <div className="rounded-xl p-5 text-center group transition-all duration-300 hover:-translate-y-1"
+                  style={{
+                    background: "linear-gradient(145deg,rgba(20,45,25,0.85),rgba(10,25,15,0.8))",
+                    border: "1px solid rgba(92,184,110,0.15)",
+                  }}>
+                  <div className="w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-3"
+                    style={{ background: "rgba(92,184,110,0.12)", border: "1px solid rgba(92,184,110,0.25)" }}>
+                    <Icon name="Check" size={16} />
+                  </div>
+                  <p className="text-sm font-medium leading-relaxed" style={{ color: "rgba(255,255,255,0.8)" }}>
+                    {item}
+                  </p>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+
+          <FadeIn className="text-center">
+            <a href="#contact"
+              className="inline-block px-10 py-4 rounded-full font-bold text-sm tracking-widest uppercase transition-all duration-300 hover:scale-105"
+              style={{ background: "linear-gradient(135deg,#3a8f4a,#5cb86e)", color: "#fff", boxShadow: "0 8px 30px rgba(60,150,80,0.4)" }}>
+              Записаться на медитацию
+            </a>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* ══════════ ИНСТРУКТОРЫ ══════════ */}
+      <section id="instructors" className="py-24 px-5"
+        style={{ background: "linear-gradient(180deg,#0a1a0f,#0a0e1a)" }}>
+        <div className="max-w-6xl mx-auto">
+          <FadeIn className="text-center mb-16">
+            <h2 className="font-display mb-4"
+              style={{ fontFamily: "'Oswald',sans-serif", fontSize: "clamp(32px,5vw,56px)", fontWeight: 700, color: "#fff", letterSpacing: "0.08em", textTransform: "uppercase" }}>
+              ИНСТРУКТОРЫ ШОДХАН
+            </h2>
+            <p className="text-sm" style={{ color: "rgba(255,255,255,0.55)" }}>
+              Сертифицированные инструкторы в твоём городе
+            </p>
+            <div className="w-20 h-1 mx-auto rounded-full mt-4" style={{ background: "linear-gradient(90deg,#3a8f4a,#5cb86e)" }} />
+          </FadeIn>
+
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+            {INSTRUCTORS_FULL.map((ins, i) => (
+              <FadeIn key={i} delay={(i % 4) * 0.07}>
+                <div className="rounded-2xl overflow-hidden group transition-all duration-300 hover:-translate-y-2"
+                  style={{
+                    background: "linear-gradient(145deg,rgba(18,32,22,0.95),rgba(10,18,28,0.9))",
+                    border: "1px solid rgba(92,184,110,0.12)",
+                    boxShadow: "0 4px 20px rgba(0,0,0,0.3)",
+                  }}>
+                  <div className="relative overflow-hidden" style={{ height: 220 }}>
+                    {ins.img ? (
+                      <img src={ins.img} alt={ins.name}
+                        className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                        style={{ filter: "brightness(0.9)" }}
+                        onError={e => {
+                          (e.currentTarget as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${encodeURIComponent(ins.name)}&background=1a3a22&color=5cb86e&size=220`;
+                        }} />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center"
+                        style={{ background: "linear-gradient(135deg,#0d2a15,#0a1a25)" }}>
+                        <div className="w-20 h-20 rounded-full flex items-center justify-center"
+                          style={{ background: "rgba(92,184,110,0.1)", border: "2px solid rgba(92,184,110,0.25)" }}>
+                          <Icon name="User" size={32} />
+                        </div>
+                      </div>
+                    )}
+                    <div className="absolute bottom-0 left-0 right-0 h-16"
+                      style={{ background: "linear-gradient(to top,rgba(10,18,28,0.9),transparent)" }} />
+                    <div className="absolute bottom-2 left-3">
+                      <span className="text-xs px-2.5 py-1 rounded-full font-medium"
+                        style={{ background: "rgba(0,0,0,0.6)", color: "#5cb86e", backdropFilter: "blur(6px)", fontFamily: "'Montserrat',sans-serif" }}>
+                        {ins.city}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="p-4">
+                    <p className="text-xs mb-1" style={{ color: "rgba(92,184,110,0.7)", fontFamily: "'Oswald',sans-serif", letterSpacing: "0.08em", textTransform: "uppercase" }}>
+                      {ins.role}
+                    </p>
+                    <h3 className="font-bold text-base mb-3"
+                      style={{ fontFamily: "'Oswald',sans-serif", color: "#fff", letterSpacing: "0.04em" }}>
+                      {ins.name}
+                    </h3>
+                    <div className="flex gap-2">
+                      <a href={ins.tg}
+                        className="w-8 h-8 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110"
+                        style={{ background: "rgba(92,184,110,0.1)", border: "1px solid rgba(92,184,110,0.2)" }}>
+                        <Icon name="Send" size={12} />
+                      </a>
+                      <a href={ins.ig}
+                        className="w-8 h-8 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110"
+                        style={{ background: "rgba(92,184,110,0.1)", border: "1px solid rgba(92,184,110,0.2)" }}>
+                        <Icon name="Instagram" size={12} />
+                      </a>
+                      <a href="#contact"
+                        className="ml-auto text-xs px-3 py-1.5 rounded-full font-medium transition-all duration-200 hover:opacity-80"
+                        style={{ background: "linear-gradient(135deg,#3a8f4a,#5cb86e)", color: "#fff", fontFamily: "'Montserrat',sans-serif" }}>
+                        Записаться
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+
+          <FadeIn className="text-center mt-12">
+            <a href="#contact"
+              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full font-semibold text-sm tracking-widest uppercase transition-all duration-300 hover:scale-105"
+              style={{ border: "1px solid rgba(92,184,110,0.4)", color: "#5cb86e", background: "rgba(92,184,110,0.05)" }}>
+              <Icon name="UserPlus" size={16} />
+              Стать инструктором
+            </a>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* ══════════ КАК ПРОХОДИТ ПРАКТИКА ══════════ */}
+      <section className="py-24 px-5 relative overflow-hidden"
+        style={{ background: "linear-gradient(180deg,#0a0e1a,#0a1a0f)" }}>
+        <div className="max-w-5xl mx-auto">
+          <FadeIn className="text-center mb-16">
+            <h2 className="font-display mb-4"
+              style={{ fontFamily: "'Oswald',sans-serif", fontSize: "clamp(28px,4vw,52px)", fontWeight: 700, color: "#fff", letterSpacing: "0.08em", textTransform: "uppercase" }}>
+              КАК ПРОХОДИТ ПРАКТИКА
+            </h2>
+            <div className="w-20 h-1 mx-auto rounded-full" style={{ background: "linear-gradient(90deg,#3a8f4a,#5cb86e)" }} />
+          </FadeIn>
+          <div className="grid md:grid-cols-2 gap-6">
+            {[
+              { img: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=600&q=70", title: "Групповые сессии", desc: "Медитации в группе создают особое поле осознанности. Совместная практика усиливает эффект многократно." },
+              { img: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&q=70", title: "Индивидуальная работа", desc: "Персональные сессии позволяют работать с конкретными запросами и глубоко погрузиться в практику." },
+              { img: "https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?w=600&q=70", title: "Природные интенсивы", desc: "Выездные практики на природе — горы, лес, море. Первоэлементы в их живом воплощении усиливают медитацию." },
+              { img: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&q=70", title: "Онлайн-практики", desc: "Практикуй Шодхан из любой точки мира. Онлайн-формат сохраняет глубину и эффективность метода." },
+            ].map((item, i) => (
+              <FadeIn key={i} delay={i * 0.08}>
+                <div className="rounded-2xl overflow-hidden group transition-all duration-300 hover:-translate-y-1"
+                  style={{ border: "1px solid rgba(92,184,110,0.1)" }}>
+                  <div className="relative overflow-hidden" style={{ height: 200 }}>
+                    <img src={item.img} alt={item.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      style={{ filter: "brightness(0.65) saturate(0.8)" }} />
+                    <div className="absolute inset-0 flex items-end p-5"
+                      style={{ background: "linear-gradient(to top,rgba(0,0,0,0.7),transparent)" }}>
+                      <h3 className="font-bold text-xl"
+                        style={{ fontFamily: "'Oswald',sans-serif", color: "#fff", letterSpacing: "0.06em", textTransform: "uppercase" }}>
+                        {item.title}
+                      </h3>
+                    </div>
+                  </div>
+                  <div className="p-5" style={{ background: "rgba(255,255,255,0.03)" }}>
+                    <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.65)" }}>{item.desc}</p>
+                  </div>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════ CTA ══════════ */}
+      <section className="py-20 px-5 text-center relative overflow-hidden"
+        style={{ background: "linear-gradient(135deg,#0d2a15 0%,#0a1825 50%,#0d2a15 100%)" }}>
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full opacity-15"
+            style={{ background: "radial-gradient(ellipse,#1a6b2a,transparent)" }} />
+        </div>
+        <div className="max-w-2xl mx-auto relative z-10">
+          <FadeIn>
+            <h2 className="font-display mb-4"
+              style={{ fontFamily: "'Oswald',sans-serif", fontSize: "clamp(32px,5vw,60px)", fontWeight: 700, color: "#fff", letterSpacing: "0.08em", textTransform: "uppercase" }}>
+              ГОТОВ НАЧАТЬ ПРАКТИКУ?
+            </h2>
+            <p className="text-base mb-8" style={{ color: "rgba(255,255,255,0.65)" }}>
+              Присоединяйся к Шодхан в своём городе. Первая сессия — лучший способ
+              почувствовать силу активной медитации.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a href="#contact"
+                className="px-10 py-4 rounded-full font-bold text-sm tracking-widest uppercase transition-all duration-300 hover:scale-105"
+                style={{ background: "linear-gradient(135deg,#3a8f4a,#5cb86e)", color: "#fff", boxShadow: "0 8px 30px rgba(60,150,80,0.5)" }}>
+                Записаться на сессию
+              </a>
+              <a href="https://t.me/shodhan" target="_blank" rel="noopener noreferrer"
+                className="px-8 py-4 rounded-full font-medium text-sm tracking-widest uppercase inline-flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105"
+                style={{ border: "1px solid rgba(255,255,255,0.3)", color: "#fff", background: "rgba(255,255,255,0.05)" }}>
+                <Icon name="Send" size={14} />
+                Telegram-канал
+              </a>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+    </>
+  );
+}
