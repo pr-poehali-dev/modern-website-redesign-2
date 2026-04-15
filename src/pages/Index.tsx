@@ -1,5 +1,13 @@
 import { useState, useEffect, useRef } from "react";
 import Icon from "@/components/ui/icon";
+import { getPublicEvents, type ShodhanEvent } from "@/lib/api";
+
+const MONTH_RU = ["января","февраля","марта","апреля","мая","июня","июля","августа","сентября","октября","ноября","декабря"];
+function fmtDate(d: string) {
+  if (!d) return "";
+  const dt = new Date(d);
+  return `${dt.getDate()} ${MONTH_RU[dt.getMonth()]} ${dt.getFullYear()}`;
+}
 
 const useInView = (threshold = 0.1) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -92,7 +100,7 @@ const NAV = [
   { label: "О методе", href: "#about" },
   { label: "Практики", href: "#elements" },
   { label: "Инструкторы", href: "#instructors" },
-  { label: "После медитации", href: "#after" },
+  { label: "Мероприятия", href: "#events" },
   { label: "Контакты", href: "#contact" },
 ];
 
@@ -101,6 +109,11 @@ const NAV = [
 export default function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [events, setEvents] = useState<ShodhanEvent[]>([]);
+
+  useEffect(() => {
+    getPublicEvents().then(setEvents).catch(() => {});
+  }, []);
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 50);
@@ -641,6 +654,150 @@ export default function Index() {
                 Telegram-канал
               </a>
             </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* ══════════ БЛИЖАЙШИЕ МЕРОПРИЯТИЯ ══════════ */}
+      <section id="events" className="py-24 px-5"
+        style={{ background: "linear-gradient(180deg,#0a1a0f,#081218)" }}>
+        <div className="max-w-6xl mx-auto">
+          <FadeIn className="flex items-end justify-between mb-12">
+            <div>
+              <h2 className="font-display mb-3"
+                style={{ fontFamily: "'Oswald',sans-serif", fontSize: "clamp(32px,5vw,56px)", fontWeight: 700, color: "#fff", letterSpacing: "0.08em", textTransform: "uppercase" }}>
+                БЛИЖАЙШИЕ<br />МЕРОПРИЯТИЯ
+              </h2>
+              <div className="w-20 h-1 rounded-full" style={{ background: "linear-gradient(90deg,#3a8f4a,#5cb86e)" }} />
+            </div>
+            <a href="/login"
+              className="hidden sm:flex items-center gap-2 text-sm px-5 py-2.5 rounded-full font-medium transition-all duration-200 hover:scale-105"
+              style={{ border: "1px solid rgba(92,184,110,0.35)", color: "#5cb86e", background: "rgba(92,184,110,0.05)" }}>
+              <Icon name="User" size={14} />
+              Кабинет инструктора
+            </a>
+          </FadeIn>
+
+          {events.length === 0 ? (
+            <FadeIn>
+              <div className="text-center py-16 rounded-2xl"
+                style={{ background: "rgba(255,255,255,0.02)", border: "1px dashed rgba(255,255,255,0.07)" }}>
+                <Icon name="CalendarX" size={36} className="mx-auto mb-4 opacity-20" />
+                <p className="text-sm" style={{ color: "rgba(255,255,255,0.3)" }}>
+                  Мероприятий пока нет.<br />
+                  <a href="/login" style={{ color: "rgba(92,184,110,0.6)" }}>Инструкторы</a> — добавьте своё расписание!
+                </p>
+              </div>
+            </FadeIn>
+          ) : (
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              {events.map((ev, i) => (
+                <FadeIn key={ev.id} delay={(i % 3) * 0.08}>
+                  <div className="rounded-2xl overflow-hidden flex flex-col group transition-all duration-300 hover:-translate-y-1"
+                    style={{
+                      background: "linear-gradient(145deg,rgba(15,30,20,0.95),rgba(8,15,25,0.9))",
+                      border: "1px solid rgba(92,184,110,0.14)",
+                      boxShadow: "0 4px 20px rgba(0,0,0,0.3)",
+                    }}>
+                    {/* Дата-шапка */}
+                    <div className="px-5 pt-5 pb-4 flex items-start justify-between"
+                      style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+                      <div>
+                        <div className="text-3xl font-bold leading-none mb-1"
+                          style={{ fontFamily: "'Oswald',sans-serif", color: "#5cb86e" }}>
+                          {new Date(ev.event_date).getDate()}
+                        </div>
+                        <div className="text-xs" style={{ color: "rgba(255,255,255,0.5)" }}>
+                          {MONTH_RU[new Date(ev.event_date).getMonth()]} {new Date(ev.event_date).getFullYear()}
+                        </div>
+                      </div>
+                      <div className="text-right">
+                        <div className="text-sm font-semibold" style={{ fontFamily: "'Oswald',sans-serif", color: "#fff" }}>
+                          {ev.event_time}
+                        </div>
+                        <div className="text-xs mt-0.5" style={{ color: ev.price === "Бесплатно" ? "#5cb86e" : "rgba(255,255,255,0.7)" }}>
+                          {ev.price}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Контент */}
+                    <div className="px-5 py-4 flex-1">
+                      <h3 className="font-bold text-base mb-2"
+                        style={{ fontFamily: "'Oswald',sans-serif", color: "#fff", letterSpacing: "0.04em", textTransform: "uppercase" }}>
+                        {ev.title}
+                      </h3>
+                      {ev.description && (
+                        <p className="text-xs leading-relaxed mb-3 line-clamp-2"
+                          style={{ color: "rgba(255,255,255,0.5)" }}>
+                          {ev.description}
+                        </p>
+                      )}
+                      <div className="space-y-1.5">
+                        <div className="flex items-center gap-2 text-xs" style={{ color: "rgba(255,255,255,0.45)" }}>
+                          <Icon name="MapPin" size={11} />
+                          <span className="truncate">{ev.location}</span>
+                        </div>
+                        <div className="flex items-center gap-2 text-xs" style={{ color: "rgba(255,255,255,0.45)" }}>
+                          <Icon name="Building2" size={11} />
+                          <span>{ev.city}</span>
+                        </div>
+                        {ev.spots > 0 && (
+                          <div className="flex items-center gap-2 text-xs" style={{ color: "rgba(255,255,255,0.45)" }}>
+                            <Icon name="Users" size={11} />
+                            <span>{ev.spots} мест</span>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Инструктор + кнопка */}
+                    <div className="px-5 pb-5 pt-3 flex items-center justify-between"
+                      style={{ borderTop: "1px solid rgba(255,255,255,0.05)" }}>
+                      <div className="flex items-center gap-2">
+                        <div className="w-7 h-7 rounded-full overflow-hidden shrink-0"
+                          style={{ border: "1px solid rgba(92,184,110,0.3)" }}>
+                          {ev.instructor_photo ? (
+                            <img src={ev.instructor_photo} alt="" className="w-full h-full object-cover"
+                              onError={e => { (e.currentTarget as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${encodeURIComponent(ev.instructor_name || "")}&background=1a3a22&color=5cb86e&size=28`; }} />
+                          ) : (
+                            <div className="w-full h-full flex items-center justify-center"
+                              style={{ background: "rgba(92,184,110,0.1)" }}>
+                              <Icon name="User" size={10} />
+                            </div>
+                          )}
+                        </div>
+                        <span className="text-xs truncate" style={{ color: "rgba(255,255,255,0.5)", maxWidth: 110 }}>
+                          {ev.instructor_name}
+                        </span>
+                      </div>
+                      {ev.contact_link ? (
+                        <a href={ev.contact_link} target="_blank" rel="noopener noreferrer"
+                          className="text-xs px-4 py-1.5 rounded-full font-medium transition-all duration-200 hover:opacity-80"
+                          style={{ background: "linear-gradient(135deg,#3a8f4a,#5cb86e)", color: "#fff", fontFamily: "'Montserrat',sans-serif" }}>
+                          Записаться
+                        </a>
+                      ) : (
+                        <a href="#contact"
+                          className="text-xs px-4 py-1.5 rounded-full font-medium transition-all duration-200 hover:opacity-80"
+                          style={{ border: "1px solid rgba(92,184,110,0.3)", color: "#5cb86e" }}>
+                          Написать
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                </FadeIn>
+              ))}
+            </div>
+          )}
+
+          <FadeIn className="text-center mt-10">
+            <a href="/login"
+              className="inline-flex items-center gap-2 text-sm px-6 py-3 rounded-full font-medium transition-all duration-200 hover:scale-105 sm:hidden"
+              style={{ border: "1px solid rgba(92,184,110,0.35)", color: "#5cb86e", background: "rgba(92,184,110,0.05)" }}>
+              <Icon name="User" size={14} />
+              Кабинет инструктора
+            </a>
           </FadeIn>
         </div>
       </section>
