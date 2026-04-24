@@ -1,5 +1,6 @@
 import Icon from "@/components/ui/icon";
 import FadeIn from "./FadeIn";
+import CityMap from "./CityMap";
 import { DMITRY_PHOTO, ELEMENTS_16, AFTER_MEDITATION, INSTRUCTORS_FULL } from "./shared";
 
 export default function AboutSection() {
@@ -151,57 +152,7 @@ export default function AboutSection() {
       </section>
 
       {/* ══════════ КАРТА МИРА ══════════ */}
-      <section className="py-16 px-5 relative overflow-hidden"
-        style={{ background: "linear-gradient(180deg,#0a1a0f,#081218)" }}>
-        <div className="max-w-5xl mx-auto text-center">
-          <FadeIn>
-            <h2 className="font-display mb-3"
-              style={{ fontFamily: "'Oswald',sans-serif", fontSize: "clamp(28px,4vw,48px)", fontWeight: 700, color: "#fff", letterSpacing: "0.08em", textTransform: "uppercase" }}>
-              ШОДХАН В ТВОЁМ ГОРОДЕ
-            </h2>
-            <p className="text-sm mb-10" style={{ color: "rgba(255,255,255,0.55)" }}>
-              Инструкторы Шодхан уже работают в десятках городов России и СНГ
-            </p>
-          </FadeIn>
-          <FadeIn delay={0.15}>
-            <div className="relative rounded-2xl overflow-hidden"
-              style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)" }}>
-              <img
-                src="https://images.unsplash.com/photo-1589519160732-57fc498494f8?w=1200&q=70"
-                alt="Карта мира"
-                className="w-full object-cover opacity-40"
-                style={{ height: 320 }}
-              />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="font-display text-6xl font-bold mb-2"
-                    style={{ fontFamily: "'Oswald',sans-serif", color: "#5cb86e" }}>20+</div>
-                  <div className="text-lg font-medium" style={{ color: "rgba(255,255,255,0.8)" }}>городов присутствия</div>
-                </div>
-              </div>
-              {[
-                { top: "35%", left: "55%", city: "Москва" },
-                { top: "30%", left: "54%", city: "СПб" },
-                { top: "38%", left: "60%", city: "Екб" },
-                { top: "42%", left: "62%", city: "Новосиб" },
-                { top: "45%", left: "63%", city: "Омск" },
-                { top: "40%", left: "58%", city: "Казань" },
-              ].map((dot, i) => (
-                <div key={i} className="absolute" style={{ top: dot.top, left: dot.left, transform: "translate(-50%,-50%)" }}>
-                  <div className="relative">
-                    <div className="w-3 h-3 rounded-full animate-pulse"
-                      style={{ background: "#5cb86e", boxShadow: "0 0 12px #5cb86e" }} />
-                    <span className="absolute top-4 left-1/2 -translate-x-1/2 whitespace-nowrap text-center"
-                      style={{ fontSize: "8px", color: "rgba(255,255,255,0.7)" }}>
-                      {dot.city}
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </FadeIn>
-        </div>
-      </section>
+      <CityMap />
 
       {/* ══════════ 16 ЭЛЕМЕНТОВ ══════════ */}
       <section id="elements" className="py-24 px-5 relative"
