@@ -82,8 +82,7 @@ export default function HeroSection({ scrolled, menuOpen, setMenuOpen }: Props) 
         <div className="absolute bottom-0 right-0 z-10 pointer-events-none"
           style={{
             width: "clamp(280px, 45vw, 620px)",
-            opacity: 0,
-            animation: "fade-in 1s ease 0.4s forwards",
+            opacity: 1,
           }}>
           <img
             src={DMITRY_PHOTO}
@@ -98,7 +97,7 @@ export default function HeroSection({ scrolled, menuOpen, setMenuOpen }: Props) 
         {/* Контент — левая сторона */}
         <div className="relative z-20 flex flex-col justify-center min-h-screen px-6 md:px-16 max-w-2xl">
           <div className="pt-24">
-            <div style={{ opacity: 0, animation: "fade-in 0.9s ease 0.2s forwards" }}>
+            <div style={{ opacity: 1 }}>
               <p className="text-xs font-semibold tracking-widest uppercase mb-3"
                 style={{ fontFamily: "'Oswald',sans-serif", color: "#5cb86e", letterSpacing: "0.2em" }}>
                 Авторский метод
@@ -108,7 +107,7 @@ export default function HeroSection({ scrolled, menuOpen, setMenuOpen }: Props) 
                 ШОДХАН
               </h1>
             </div>
-            <div style={{ opacity: 0, animation: "fade-in 0.9s ease 0.55s forwards" }}>
+            <div style={{ opacity: 1 }}>
               <p className="text-base md:text-xl font-medium mb-2"
                 style={{ fontFamily: "'Montserrat', sans-serif", color: "rgba(255,255,255,0.88)" }}>
                 Активная медитация первоэлементов
@@ -122,7 +121,7 @@ export default function HeroSection({ scrolled, menuOpen, setMenuOpen }: Props) 
             </div>
 
             <div className="flex flex-col sm:flex-row gap-3 mb-12"
-              style={{ opacity: 0, animation: "fade-in 0.9s ease 0.8s forwards" }}>
+              style={{ opacity: 1 }}>
               <a href="#about"
                 className="px-8 py-3.5 rounded-full font-semibold text-sm tracking-widest uppercase transition-all duration-300 hover:scale-105 text-center"
                 style={{ background: "linear-gradient(135deg,#3a8f4a,#5cb86e)", color: "#fff", boxShadow: "0 6px 24px rgba(60,150,80,0.45)" }}>
@@ -136,7 +135,7 @@ export default function HeroSection({ scrolled, menuOpen, setMenuOpen }: Props) 
             </div>
 
             {/* Круглые фото инструкторов */}
-            <div style={{ opacity: 0, animation: "fade-in 0.9s ease 1s forwards" }}>
+            <div style={{ opacity: 1 }}>
               <p className="text-xs mb-3" style={{ color: "rgba(255,255,255,0.35)", fontFamily: "'Montserrat',sans-serif", letterSpacing: "0.08em" }}>
                 ИНСТРУКТОРЫ
               </p>
@@ -162,7 +161,7 @@ export default function HeroSection({ scrolled, menuOpen, setMenuOpen }: Props) 
 
         {/* Scroll indicator */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-20"
-          style={{ opacity: 0, animation: "fade-in 1s ease 1.5s forwards", color: "rgba(255,255,255,0.3)" }}>
+          style={{ opacity: 1, color: "rgba(255,255,255,0.3)" }}>
           <div className="w-px h-10 animate-pulse"
             style={{ background: "linear-gradient(to bottom, rgba(255,255,255,0.4), transparent)" }} />
         </div>
