@@ -69,27 +69,81 @@ export default function AboutSection() {
             </FadeIn>
           </div>
 
-          {/* Основатель */}
-          <FadeIn delay={0.1} className="mt-16">
-            <div className="rounded-2xl p-8 flex flex-col md:flex-row items-center gap-8"
-              style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)" }}>
-              <div className="rounded-full overflow-hidden shrink-0" style={{ width: 120, height: 120, border: "3px solid rgba(92,184,110,0.5)", background: "#0d1a10" }}>
-                <img src={DMITRY_PHOTO}
-                  alt="Дмитрий Хара"
-                  className="w-full h-full object-cover object-top"
-                  style={{ objectPosition: "center 10%" }}
-                  onError={e => { (e.currentTarget as HTMLImageElement).src = `https://ui-avatars.com/api/?name=ДХ&background=2d4a2d&color=fff&size=120`; }} />
+          {/* Об авторе — Дмитрий Хара */}
+          <FadeIn delay={0.1} className="mt-20">
+            <div className="text-center mb-10">
+              <h2 className="mb-1"
+                style={{ fontFamily: "'Oswald',sans-serif", fontSize: "clamp(28px,4vw,48px)", fontWeight: 700, color: "#5cb86e", letterSpacing: "0.06em", textTransform: "uppercase" }}>
+                ОБ АВТОРЕ
+              </h2>
+              <h3
+                style={{ fontFamily: "'Oswald',sans-serif", fontSize: "clamp(36px,6vw,64px)", fontWeight: 700, color: "#fff", letterSpacing: "0.06em", textTransform: "uppercase" }}>
+                ДМИТРИЙ ХАРА
+              </h3>
+            </div>
+
+            <div className="grid md:grid-cols-[1fr_auto_1fr] gap-6 md:gap-8 items-start">
+              {/* Left facts */}
+              <div className="flex flex-col gap-4">
+                {[
+                  "Спикер международного саммита «В потоке» (совместно с Джо Диспенза, Брюсом Липтоном, Греггом Брейденом, Дипаком Чопра, Далай Ламой и другими спикерами мирового уровня)",
+                  "Более 10 лет Дмитрий занимается вопросами развития личности. Его книги рекомендуют к прочтению на своих занятиях ведущие тренеры и коучи России.",
+                  "Автор активной медитации первоэлементов «Шодхан», которую проводят более 200 инструкторов по всему миру",
+                  "Отец пятерых детей",
+                ].map((text, i) => (
+                  <div key={i} className="flex gap-3 items-start rounded-xl px-4 py-3"
+                    style={{ background: "rgba(92,184,110,0.08)", border: "1px solid rgba(92,184,110,0.18)" }}>
+                    <div className="shrink-0 mt-0.5 w-5 h-5 rounded-full flex items-center justify-center"
+                      style={{ background: "rgba(92,184,110,0.2)", border: "1px solid rgba(92,184,110,0.4)" }}>
+                      <Icon name="Check" size={11} style={{ color: "#5cb86e" }} />
+                    </div>
+                    <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.82)", fontFamily: "'Montserrat',sans-serif" }}>
+                      {text}
+                    </p>
+                  </div>
+                ))}
               </div>
-              <div>
-                <p className="text-xs tracking-widest uppercase mb-1" style={{ color: "#5cb86e", fontFamily: "'Oswald',sans-serif" }}>Основатель метода</p>
-                <h3 className="font-display text-2xl font-bold mb-3" style={{ fontFamily: "'Oswald',sans-serif", color: "#fff", letterSpacing: "0.05em" }}>
-                  ДМИТРИЙ ХАРА
-                </h3>
-                <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.65)" }}>
-                  Более 15 лет изучения и практики медитации. Создал метод Шодхан как синтез
-                  древних традиций и современного понимания психологии и нейронауки.
-                  Провёл сотни семинаров и обучил тысячи практикующих по всей России и миру.
-                </p>
+
+              {/* Center photo */}
+              <div className="relative flex flex-col items-center mx-auto" style={{ width: 260 }}>
+                <div className="relative rounded-2xl overflow-hidden"
+                  style={{ width: 260, height: 360, border: "2px solid rgba(92,184,110,0.25)", boxShadow: "0 20px 60px rgba(0,0,0,0.6)" }}>
+                  <img src={DMITRY_PHOTO} alt="Дмитрий Хара"
+                    className="w-full h-full object-cover"
+                    style={{ objectPosition: "center top" }}
+                    onError={e => { (e.currentTarget as HTMLImageElement).src = `https://ui-avatars.com/api/?name=ДХ&background=2d4a2d&color=fff&size=260`; }} />
+                  <div className="absolute inset-0 pointer-events-none"
+                    style={{ background: "linear-gradient(to top, rgba(10,20,15,0.85) 0%, transparent 50%)" }} />
+                </div>
+                {/* Quote */}
+                <div className="mt-4 rounded-xl px-4 py-3 text-center"
+                  style={{ background: "rgba(92,184,110,0.12)", border: "1px solid rgba(92,184,110,0.25)", maxWidth: 260 }}>
+                  <p className="text-xs leading-relaxed italic"
+                    style={{ color: "rgba(255,255,255,0.75)", fontFamily: "'Montserrat',sans-serif" }}>
+                    «Эта медитация пришла ко мне, как ответ на запрос о медитации, которая не отрывала бы от земли, и позволяла бы сохранять социальную активность и пробуждённое состояние сознания одновременно»
+                  </p>
+                </div>
+              </div>
+
+              {/* Right facts */}
+              <div className="flex flex-col gap-4">
+                {[
+                  "С 2013 года ведёт авторские программы и ретриты",
+                  "Основатель нового подхода к предпринимательству «Живой Бизнес»",
+                  "Более 15 лет — меценат центра «Анима» (для творческого развития детей с ограниченными возможностями здоровья)",
+                  "Писатель. Автор книг-бестселлеров, меняющих сознание — «П.Ш.», «Трэш», «Сияние», «ПерепроШивка», «64 Дара Бытия», метафорических карт «Камертон Вселенной»",
+                ].map((text, i) => (
+                  <div key={i} className="flex gap-3 items-start rounded-xl px-4 py-3"
+                    style={{ background: "rgba(92,184,110,0.08)", border: "1px solid rgba(92,184,110,0.18)" }}>
+                    <div className="shrink-0 mt-0.5 w-5 h-5 rounded-full flex items-center justify-center"
+                      style={{ background: "rgba(92,184,110,0.2)", border: "1px solid rgba(92,184,110,0.4)" }}>
+                      <Icon name="Check" size={11} style={{ color: "#5cb86e" }} />
+                    </div>
+                    <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.82)", fontFamily: "'Montserrat',sans-serif" }}>
+                      {text}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
           </FadeIn>

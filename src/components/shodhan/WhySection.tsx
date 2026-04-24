@@ -26,43 +26,31 @@ export default function WhySection() {
       className="relative py-20 md:py-28 overflow-hidden"
       style={{ background: "linear-gradient(180deg, #0a0e1a 0%, #0d0520 50%, #0a0e1a 100%)" }}
     >
-      {/* Subtle noise texture overlay */}
-      <div
-        className="absolute inset-0 pointer-events-none opacity-[0.03]"
-        style={{
-          backgroundImage:
-            "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
-          backgroundSize: "150px 150px",
-        }}
-      />
-
       <div className="relative z-10 max-w-7xl mx-auto px-5">
-        {/* Title */}
         <FadeIn>
           <h2
-            className="text-center mb-14 md:mb-18 text-4xl md:text-5xl lg:text-6xl uppercase tracking-widest"
+            className="text-center mb-14 text-4xl md:text-5xl lg:text-6xl uppercase"
             style={{
               fontFamily: "'Cinzel', serif",
               color: "#e8dcc8",
               textShadow: "0 2px 30px rgba(201,168,76,0.25)",
-              letterSpacing: "0.12em",
+              letterSpacing: "0.1em",
             }}
           >
             ШОДХАН НУЖЕН ТЕБЕ, ЕСЛИ
           </h2>
         </FadeIn>
 
-        {/* Cards grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
           {CARDS.map((card, i) => (
             <FadeIn key={i} delay={i * 120}>
               <div
-                className="relative rounded-2xl overflow-hidden group cursor-default"
+                className="relative rounded-2xl overflow-hidden cursor-default flex flex-col"
                 style={{
                   background: "#111420",
                   border: "1px solid rgba(255,255,255,0.07)",
                   boxShadow: "0 8px 40px rgba(0,0,0,0.55)",
-                  minHeight: 400,
+                  height: 420,
                   transform: i % 2 === 0 ? "rotate(-1deg)" : "rotate(0.8deg)",
                   transition: "transform 0.35s ease, box-shadow 0.35s ease",
                 }}
@@ -75,29 +63,27 @@ export default function WhySection() {
                   (e.currentTarget as HTMLDivElement).style.boxShadow = "0 8px 40px rgba(0,0,0,0.55)";
                 }}
               >
-                {/* Image */}
-                <img
-                  src={card.img}
-                  alt=""
-                  className="w-full h-full object-cover absolute inset-0"
-                  style={{ filter: "grayscale(1) contrast(1.05) brightness(0.85)" }}
-                />
+                {/* Image — takes top 65% */}
+                <div className="relative flex-shrink-0" style={{ height: "65%" }}>
+                  <img
+                    src={card.img}
+                    alt=""
+                    className="w-full h-full object-cover object-top"
+                    style={{ filter: "grayscale(1) contrast(1.05) brightness(0.85)" }}
+                  />
+                  {/* Fade into card body */}
+                  <div
+                    className="absolute bottom-0 left-0 right-0 h-20 pointer-events-none"
+                    style={{ background: "linear-gradient(to bottom, transparent, #111420)" }}
+                  />
+                </div>
 
-                {/* Bottom gradient */}
-                <div
-                  className="absolute inset-0 pointer-events-none"
-                  style={{
-                    background:
-                      "linear-gradient(to top, rgba(5,5,15,0.97) 0%, rgba(5,5,15,0.6) 38%, rgba(5,5,15,0.0) 65%)",
-                  }}
-                />
-
-                {/* Text */}
-                <div className="absolute bottom-0 left-0 right-0 p-5 z-10">
+                {/* Text — bottom 35% */}
+                <div className="flex-1 flex items-start px-5 pt-2 pb-5">
                   <p
-                    className="text-sm md:text-[15px] leading-relaxed"
+                    className="text-sm leading-relaxed"
                     style={{
-                      color: "rgba(232,220,200,0.92)",
+                      color: "rgba(232,220,200,0.88)",
                       fontFamily: "'Montserrat', sans-serif",
                       fontWeight: 400,
                     }}
