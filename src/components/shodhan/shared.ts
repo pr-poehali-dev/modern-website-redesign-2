@@ -68,18 +68,19 @@ export const AFTER_MEDITATION = [
 ];
 
 export const INSTRUCTORS_FULL = [
-  { name: "Дмитрий Хара", city: "Москва", role: "Основатель метода", img: DMITRY_PHOTO, tg: "#", ig: "#" },
-  { name: "Мария Светлова", city: "Санкт-Петербург", role: "Инструктор", img: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&q=80", tg: "#", ig: "#" },
-  { name: "Анна Берёзова", city: "Новосибирск", role: "Инструктор", img: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=400&q=80", tg: "#", ig: "#" },
-  { name: "Иван Петров", city: "Казань", role: "Инструктор", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80", tg: "#", ig: "#" },
-  { name: "Ольга Морозова", city: "Краснодар", role: "Инструктор", img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80", tg: "#", ig: "#" },
-  { name: "Сергей Волков", city: "Воронеж", role: "Инструктор", img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80", tg: "#", ig: "#" },
-  { name: "Наталья Лебедева", city: "Самара", role: "Инструктор", img: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80", tg: "#", ig: "#" },
-  { name: "Павел Соколов", city: "Уфа", role: "Инструктор", img: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80", tg: "#", ig: "#" },
-  { name: "Елена Кузнецова", city: "Ростов-на-Дону", role: "Инструктор", img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&q=80", tg: "#", ig: "#" },
-  { name: "Алина Фёдорова", city: "Пермь", role: "Инструктор", img: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400&q=80", tg: "#", ig: "#" },
-  { name: "Виктор Орлов", city: "Екатеринбург", role: "Инструктор", img: "https://images.unsplash.com/photo-1463453091185-61582044d556?w=400&q=80", tg: "#", ig: "#" },
-  { name: "Светлана Жукова", city: "Омск", role: "Инструктор", img: "https://images.unsplash.com/photo-1506863530036-1efeddceb993?w=400&q=80", tg: "#", ig: "#" },
+  { city: "Москва", role: "Основатель метода", img: DMITRY_PHOTO },
+  { city: "Инструктор", role: "Инструктор", img: "https://cdn.poehali.dev/files/7dcc45c1-c7e8-402d-86f7-a0cdca2cd9d0.png" },
+  { city: "Инструктор", role: "Инструктор", img: "https://cdn.poehali.dev/files/f7a50ea4-30e4-42e5-8764-b0ca5e793faf.png" },
+  { city: "Инструктор", role: "Инструктор", img: "https://cdn.poehali.dev/files/a1246f76-0823-46a0-a21c-f7e30bc92df9.png" },
+  { city: "Инструктор", role: "Инструктор", img: "https://cdn.poehali.dev/files/7c763edb-99f0-4fb9-8995-08dd19a893fb.png" },
+  { city: "Инструктор", role: "Инструктор", img: "https://cdn.poehali.dev/files/51708a07-06ec-4a23-aa7d-dfa1a3fb822b.png" },
+  { city: "Инструктор", role: "Инструктор", img: "https://cdn.poehali.dev/files/0e403994-a766-439f-83f5-5031a9694533.png" },
+  { city: "Инструктор", role: "Инструктор", img: "https://cdn.poehali.dev/files/faad76da-0ac4-48b5-8ae7-edb5bc0fa872.png" },
+  { city: "Инструктор", role: "Инструктор", img: "https://cdn.poehali.dev/files/4f24f45a-682f-479a-b3b2-900bed0911d0.png" },
+  { city: "Инструктор", role: "Инструктор", img: "https://cdn.poehali.dev/files/34d0c73d-0746-4070-ab78-8c1d2692ff76.png" },
+  { city: "Инструктор", role: "Инструктор", img: "https://cdn.poehali.dev/files/bc129867-0481-46bf-a409-6c86134545b6.png" },
+  { city: "Инструктор", role: "Инструктор", img: "https://cdn.poehali.dev/files/7a9e2e0b-5413-4b70-81e9-062d52169ece.png" },
+  { city: "Инструктор", role: "Инструктор", img: "https://cdn.poehali.dev/files/9fcdefa5-c445-4201-838e-5ac1fb853b78.png" },
 ];
 
 export const NAV = [

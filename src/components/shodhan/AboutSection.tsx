@@ -257,68 +257,34 @@ export default function AboutSection() {
             <div className="w-20 h-1 mx-auto rounded-full mt-4" style={{ background: "linear-gradient(90deg,#3a8f4a,#5cb86e)" }} />
           </FadeIn>
 
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-6 md:gap-8">
             {INSTRUCTORS_FULL.map((ins, i) => (
-              <FadeIn key={i} delay={(i % 4) * 0.07}>
-                <div className="rounded-2xl overflow-hidden group transition-all duration-300 hover:-translate-y-2"
-                  style={{
-                    background: "linear-gradient(145deg,rgba(18,32,22,0.95),rgba(10,18,28,0.9))",
-                    border: "1px solid rgba(92,184,110,0.12)",
-                    boxShadow: "0 4px 20px rgba(0,0,0,0.3)",
-                  }}>
-                  <div className="relative overflow-hidden" style={{ height: 220 }}>
-                    {ins.img ? (
-                      <img src={ins.img} alt={ins.name}
-                        className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                        style={{ filter: "brightness(0.9)" }}
-                        onError={e => {
-                          (e.currentTarget as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${encodeURIComponent(ins.name)}&background=1a3a22&color=5cb86e&size=220`;
-                        }} />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center"
-                        style={{ background: "linear-gradient(135deg,#0d2a15,#0a1a25)" }}>
-                        <div className="w-20 h-20 rounded-full flex items-center justify-center"
-                          style={{ background: "rgba(92,184,110,0.1)", border: "2px solid rgba(92,184,110,0.25)" }}>
-                          <Icon name="User" size={32} />
-                        </div>
-                      </div>
-                    )}
-                    <div className="absolute bottom-0 left-0 right-0 h-16"
-                      style={{ background: "linear-gradient(to top,rgba(10,18,28,0.9),transparent)" }} />
-                    <div className="absolute bottom-2 left-3">
-                      <span className="text-xs px-2.5 py-1 rounded-full font-medium"
-                        style={{ background: "rgba(0,0,0,0.6)", color: "#5cb86e", backdropFilter: "blur(6px)", fontFamily: "'Montserrat',sans-serif" }}>
-                        {ins.city}
-                      </span>
-                    </div>
+              <FadeIn key={i} delay={(i % 6) * 0.06}>
+                <div className="flex flex-col items-center group cursor-default">
+                  <div className="relative transition-transform duration-300 group-hover:scale-105"
+                    style={{
+                      width: 130, height: 130,
+                      borderRadius: "50%",
+                      border: "2px solid rgba(100,140,255,0.45)",
+                      boxShadow: "0 0 0 4px rgba(100,140,255,0.1), 0 8px 24px rgba(0,0,0,0.4)",
+                      overflow: "hidden",
+                      background: "#0d1a10",
+                    }}>
+                    <img
+                      src={ins.img}
+                      alt="Инструктор Шодхан"
+                      className="w-full h-full object-cover object-top"
+                      onError={e => {
+                        (e.currentTarget as HTMLImageElement).src = `https://ui-avatars.com/api/?name=ШД&background=1a3a22&color=5cb86e&size=130`;
+                      }}
+                    />
                   </div>
-
-                  <div className="p-4">
-                    <p className="text-xs mb-1" style={{ color: "rgba(92,184,110,0.7)", fontFamily: "'Oswald',sans-serif", letterSpacing: "0.08em", textTransform: "uppercase" }}>
-                      {ins.role}
-                    </p>
-                    <h3 className="font-bold text-base mb-3"
-                      style={{ fontFamily: "'Oswald',sans-serif", color: "#fff", letterSpacing: "0.04em" }}>
-                      {ins.name}
-                    </h3>
-                    <div className="flex gap-2">
-                      <a href={ins.tg}
-                        className="w-8 h-8 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110"
-                        style={{ background: "rgba(92,184,110,0.1)", border: "1px solid rgba(92,184,110,0.2)" }}>
-                        <Icon name="Send" size={12} />
-                      </a>
-                      <a href={ins.ig}
-                        className="w-8 h-8 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110"
-                        style={{ background: "rgba(92,184,110,0.1)", border: "1px solid rgba(92,184,110,0.2)" }}>
-                        <Icon name="Instagram" size={12} />
-                      </a>
-                      <a href="#contact"
-                        className="ml-auto text-xs px-3 py-1.5 rounded-full font-medium transition-all duration-200 hover:opacity-80"
-                        style={{ background: "linear-gradient(135deg,#3a8f4a,#5cb86e)", color: "#fff", fontFamily: "'Montserrat',sans-serif" }}>
-                        Записаться
-                      </a>
-                    </div>
-                  </div>
+                  {i === 0 && (
+                    <span className="mt-2 text-xs font-medium text-center"
+                      style={{ color: "#5cb86e", fontFamily: "'Montserrat',sans-serif" }}>
+                      Основатель
+                    </span>
+                  )}
                 </div>
               </FadeIn>
             ))}
