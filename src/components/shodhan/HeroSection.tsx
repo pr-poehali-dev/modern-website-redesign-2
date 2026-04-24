@@ -74,8 +74,7 @@ export default function HeroSection({ scrolled, menuOpen, setMenuOpen }: Props) 
             style={{ filter: "brightness(0.45) saturate(1.1)" }}
           />
           <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(0,10,25,0.35) 0%, rgba(0,8,20,0.1) 35%, rgba(0,8,20,0.55) 75%, #0a0e1a 100%)" }} />
-          <div className="absolute bottom-0 right-0 w-[55%] h-full pointer-events-none"
-            style={{ background: "linear-gradient(to left, rgba(0,0,0,0.0) 0%, rgba(0,8,20,0.5) 100%)" }} />
+
         </div>
 
         {/* Фото Дмитрия — правая сторона, во весь рост */}
