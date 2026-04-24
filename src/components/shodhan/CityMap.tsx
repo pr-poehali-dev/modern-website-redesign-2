@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import FadeIn from "./FadeIn";
+import "leaflet/dist/leaflet.css";
 
 const CITIES: { name: string; coords: [number, number] }[] = [
   { name: "Москва", coords: [55.7558, 37.6173] },
@@ -66,139 +67,149 @@ const CITIES: { name: string; coords: [number, number] }[] = [
   { name: "Черногория", coords: [42.4304, 19.2594] },
 ];
 
-declare global {
-  interface Window {
-     
-    ymaps3: Record<string, unknown>;
-  }
-}
-
-type YMapsInstance = { destroy?: () => void; addChild: (c: unknown) => void };
-
-const API_KEY = "d36bd976-9e1b-40fc-9432-e847b81e0686";
-
 export default function CityMap() {
   const mapRef = useRef<HTMLDivElement>(null);
-  const mapInstanceRef = useRef<YMapsInstance | null>(null);
+  const mapInstanceRef = useRef<unknown>(null);
 
   useEffect(() => {
-    if (mapInstanceRef.current) return;
+    if (mapInstanceRef.current || !mapRef.current) return;
 
-    const scriptId = "ymaps3-script";
-    const existingScript = document.getElementById(scriptId);
+    let map: unknown;
 
-    const initMap = async () => {
-      await window.ymaps3.ready;
-      const { YMap, YMapDefaultSchemeLayer, YMapDefaultFeaturesLayer, YMapMarker, YMapControls, YMapZoomControl, YMapScaleControl } = window.ymaps3;
+    const init = async () => {
+      const L = (await import("leaflet")).default;
 
       if (!mapRef.current || mapInstanceRef.current) return;
 
-      const map = new YMap(mapRef.current, {
-        location: { center: [60, 55], zoom: 3 },
-        theme: "dark",
+      map = L.map(mapRef.current, {
+        center: [30, 40],
+        zoom: 2,
+        zoomControl: true,
+        scrollWheelZoom: false,
       });
 
-      map.addChild(new YMapDefaultSchemeLayer({ theme: "dark" }));
-      map.addChild(new YMapDefaultFeaturesLayer());
+      // Dark tile layer from CartoDB
+      L.tileLayer(
+        "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+        {
+          attribution:
+            '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+          subdomains: "abcd",
+          maxZoom: 19,
+        }
+      ).addTo(map as L.Map);
 
-      const controls = new YMapControls({ position: "right" });
-      controls.addChild(new YMapZoomControl());
-      map.addChild(controls);
-
-      const scaleControls = new YMapControls({ position: "bottom left" });
-      scaleControls.addChild(new YMapScaleControl());
-      map.addChild(scaleControls);
-
-      CITIES.forEach(city => {
-        const el = document.createElement("div");
-        el.style.cssText = `
-          width: 12px; height: 12px;
-          background: #5cb86e;
-          border: 2px solid rgba(92,184,110,0.4);
-          border-radius: 50%;
-          box-shadow: 0 0 8px #5cb86e, 0 0 16px rgba(92,184,110,0.4);
-          cursor: pointer;
-          transition: transform 0.2s;
-          position: relative;
-        `;
-
-        const tooltip = document.createElement("div");
-        tooltip.textContent = city.name;
-        tooltip.style.cssText = `
-          position: absolute;
-          bottom: 18px;
-          left: 50%;
-          transform: translateX(-50%);
-          background: rgba(10,18,28,0.95);
-          color: #e8dcc8;
-          font-size: 11px;
-          font-family: Montserrat, sans-serif;
-          padding: 3px 8px;
-          border-radius: 6px;
-          white-space: nowrap;
-          border: 1px solid rgba(92,184,110,0.3);
-          pointer-events: none;
-          opacity: 0;
-          transition: opacity 0.2s;
-        `;
-        el.appendChild(tooltip);
-
-        el.addEventListener("mouseenter", () => {
-          el.style.transform = "scale(1.6)";
-          tooltip.style.opacity = "1";
-        });
-        el.addEventListener("mouseleave", () => {
-          el.style.transform = "scale(1)";
-          tooltip.style.opacity = "0";
+      // Custom green circle marker icon
+      const createIcon = () =>
+        L.divIcon({
+          className: "",
+          html: `<div style="
+            width:12px;height:12px;
+            background:#5cb86e;
+            border:2px solid rgba(92,184,110,0.4);
+            border-radius:50%;
+            box-shadow:0 0 8px #5cb86e,0 0 16px rgba(92,184,110,0.4);
+          "></div>`,
+          iconSize: [12, 12],
+          iconAnchor: [6, 6],
+          popupAnchor: [0, -10],
         });
 
-        const marker = new YMapMarker(
-          { coordinates: [city.coords[1], city.coords[0]] },
-          el
-        );
-        map.addChild(marker);
+      CITIES.forEach((city) => {
+        L.marker(city.coords, { icon: createIcon() })
+          .addTo(map as L.Map)
+          .bindTooltip(city.name, {
+            permanent: false,
+            direction: "top",
+            className: "shodhan-map-tooltip",
+          });
       });
 
       mapInstanceRef.current = map;
     };
 
-    if (!existingScript) {
-      const script = document.createElement("script");
-      script.id = scriptId;
-      script.src = `https://api-maps.yandex.ru/v3/?apikey=${API_KEY}&lang=ru_RU`;
-      script.async = true;
-      script.onload = initMap;
-      document.head.appendChild(script);
-    } else if (window.ymaps3) {
-      initMap();
-    } else {
-      existingScript.addEventListener("load", initMap);
-    }
+    init();
 
     return () => {
       if (mapInstanceRef.current) {
-        mapInstanceRef.current.destroy?.();
+        (mapInstanceRef.current as L.Map).remove();
         mapInstanceRef.current = null;
       }
     };
   }, []);
 
   return (
-    <section className="py-16 px-5 relative overflow-hidden"
-      style={{ background: "linear-gradient(180deg,#0a1a0f,#081218)" }}>
+    <section
+      className="py-16 px-5 relative overflow-hidden"
+      style={{ background: "linear-gradient(180deg,#0a1a0f,#081218)" }}
+    >
+      <style>{`
+        .shodhan-map-tooltip {
+          background: rgba(10,18,28,0.95) !important;
+          color: #e8dcc8 !important;
+          font-size: 11px !important;
+          font-family: Montserrat, sans-serif !important;
+          padding: 3px 8px !important;
+          border-radius: 6px !important;
+          border: 1px solid rgba(92,184,110,0.3) !important;
+          box-shadow: none !important;
+          white-space: nowrap !important;
+        }
+        .shodhan-map-tooltip::before {
+          display: none !important;
+        }
+        .leaflet-control-attribution {
+          background: rgba(10,18,28,0.7) !important;
+          color: rgba(255,255,255,0.3) !important;
+          font-size: 9px !important;
+        }
+        .leaflet-control-attribution a {
+          color: rgba(92,184,110,0.6) !important;
+        }
+        .leaflet-control-zoom a {
+          background: rgba(10,18,28,0.9) !important;
+          color: #5cb86e !important;
+          border-color: rgba(92,184,110,0.3) !important;
+        }
+        .leaflet-control-zoom a:hover {
+          background: rgba(92,184,110,0.15) !important;
+        }
+      `}</style>
+
       <div className="max-w-6xl mx-auto">
         <FadeIn>
-          <h2 className="font-display mb-3 text-center"
-            style={{ fontFamily: "'Oswald',sans-serif", fontSize: "clamp(28px,4vw,48px)", fontWeight: 700, color: "#fff", letterSpacing: "0.08em", textTransform: "uppercase" }}>
+          <h2
+            className="font-display mb-3 text-center"
+            style={{
+              fontFamily: "'Oswald',sans-serif",
+              fontSize: "clamp(28px,4vw,48px)",
+              fontWeight: 700,
+              color: "#fff",
+              letterSpacing: "0.08em",
+              textTransform: "uppercase",
+            }}
+          >
             ШОДХАН В ТВОЁМ ГОРОДЕ
           </h2>
-          <p className="text-sm mb-4 text-center" style={{ color: "rgba(255,255,255,0.55)" }}>
-            Инструкторы Шодхан работают в {CITIES.length}+ городах и странах по всему миру
+          <p
+            className="text-sm mb-4 text-center"
+            style={{ color: "rgba(255,255,255,0.55)" }}
+          >
+            Инструкторы Шодхан работают в {CITIES.length}+ городах и странах по
+            всему миру
           </p>
           <div className="flex flex-wrap justify-center gap-2 mb-8">
-            {["Россия", "СНГ", "Европа", "Азия", "Америка"].map(region => (
-              <span key={region} className="text-xs px-3 py-1 rounded-full"
-                style={{ background: "rgba(92,184,110,0.1)", border: "1px solid rgba(92,184,110,0.25)", color: "#5cb86e", fontFamily: "'Montserrat',sans-serif" }}>
+            {["Россия", "СНГ", "Европа", "Азия", "Америка"].map((region) => (
+              <span
+                key={region}
+                className="text-xs px-3 py-1 rounded-full"
+                style={{
+                  background: "rgba(92,184,110,0.1)",
+                  border: "1px solid rgba(92,184,110,0.25)",
+                  color: "#5cb86e",
+                  fontFamily: "'Montserrat',sans-serif",
+                }}
+              >
                 {region}
               </span>
             ))}
@@ -206,12 +217,23 @@ export default function CityMap() {
         </FadeIn>
 
         <FadeIn delay={0.15}>
-          <div className="relative rounded-2xl overflow-hidden"
-            style={{ border: "1px solid rgba(92,184,110,0.2)", boxShadow: "0 8px 40px rgba(0,0,0,0.5)" }}>
+          <div
+            className="relative rounded-2xl overflow-hidden"
+            style={{
+              border: "1px solid rgba(92,184,110,0.2)",
+              boxShadow: "0 8px 40px rgba(0,0,0,0.5)",
+            }}
+          >
             <div ref={mapRef} style={{ width: "100%", height: 520 }} />
           </div>
-          <p className="text-xs text-center mt-3" style={{ color: "rgba(255,255,255,0.3)", fontFamily: "'Montserrat',sans-serif" }}>
-            Наведи на точку, чтобы увидеть город
+          <p
+            className="text-xs text-center mt-3"
+            style={{
+              color: "rgba(255,255,255,0.3)",
+              fontFamily: "'Montserrat',sans-serif",
+            }}
+          >
+            Нажмите на точку, чтобы узнать город
           </p>
         </FadeIn>
       </div>
