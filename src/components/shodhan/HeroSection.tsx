@@ -81,14 +81,14 @@ export default function HeroSection({ scrolled, menuOpen, setMenuOpen }: Props) 
         {/* Фото Дмитрия — правая сторона, во весь рост */}
         <div className="absolute bottom-0 right-0 z-10 pointer-events-none"
           style={{
-            width: "clamp(280px, 45vw, 620px)",
+            width: "clamp(360px, 60vw, 820px)",
             opacity: 1,
           }}>
           <img
             src={DMITRY_PHOTO}
             alt="Дмитрий Хара"
             className="w-full object-contain object-bottom"
-            style={{ maxHeight: "92vh" }}
+            style={{ maxHeight: "100vh" }}
           />
           <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4/5 h-32 pointer-events-none"
             style={{ background: "radial-gradient(ellipse, rgba(92,184,110,0.18) 0%, transparent 70%)" }} />
