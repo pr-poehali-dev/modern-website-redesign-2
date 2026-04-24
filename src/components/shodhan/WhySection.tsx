@@ -31,10 +31,10 @@ export default function WhySection() {
           <h2
             className="text-center mb-14 text-4xl md:text-5xl lg:text-6xl uppercase"
             style={{
-              fontFamily: "'Cinzel', serif",
-              color: "#e8dcc8",
-              textShadow: "0 2px 30px rgba(201,168,76,0.25)",
-              letterSpacing: "0.1em",
+              fontFamily: "'Oswald', sans-serif",
+              color: "#fff",
+              letterSpacing: "0.08em",
+              fontWeight: 700,
             }}
           >
             ШОДХАН НУЖЕН ТЕБЕ, ЕСЛИ
@@ -43,7 +43,7 @@ export default function WhySection() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
           {CARDS.map((card, i) => (
-            <FadeIn key={i} delay={i * 120}>
+            <FadeIn key={i} delay={i * 0.12}>
               <div
                 className="relative rounded-2xl overflow-hidden cursor-default flex flex-col"
                 style={{

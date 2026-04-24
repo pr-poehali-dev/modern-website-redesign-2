@@ -10,6 +10,7 @@ export type Instructor = {
   city: string;
   bio: string;
   photo_url: string;
+  role?: string;
 };
 
 export type ShodhanEvent = {
@@ -45,17 +46,28 @@ async function callEvents(body: Record<string, unknown>, token?: string) {
 
 // ── AUTH ────────────────────────────────────────────────────────────────────
 
-export async function register(full_name: string, phone: string, city: string) {
-  return callAuth({ action: "register", full_name, phone, city });
-}
-
-export async function login(full_name: string, phone: string) {
-  const data = await callAuth({ action: "login", full_name, phone });
+export async function login(loginVal: string, password: string) {
+  const data = await callAuth({ action: "login", login: loginVal, password });
   if (data.success && data.token) {
     localStorage.setItem(TOKEN_KEY, data.token);
     localStorage.setItem(INSTRUCTOR_KEY, JSON.stringify(data.instructor));
   }
   return data;
+}
+
+export async function adminListInstructors() {
+  const token = getToken();
+  return callAuth({ action: "admin_list" }, token || undefined);
+}
+
+export async function adminCreateInstructor(full_name: string, login: string, password: string, city: string) {
+  const token = getToken();
+  return callAuth({ action: "admin_create", full_name, login, password, city }, token || undefined);
+}
+
+export async function adminDeleteInstructor(id: number) {
+  const token = getToken();
+  return callAuth({ action: "admin_delete", id }, token || undefined);
 }
 
 export async function logout() {

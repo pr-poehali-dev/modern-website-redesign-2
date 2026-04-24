@@ -1,21 +1,18 @@
 {
   "tests": [
     {
-      "name": "Register new instructor",
+      "name": "Login with wrong credentials",
       "method": "POST",
       "path": "/",
-      "body": {"action": "register", "full_name": "Тест Тестов", "phone": "+70000000099", "city": "Москва"},
-      "expectedStatus": 200,
-      "expectedBody": {"success": true},
+      "body": {"action": "login", "login": "wrong", "password": "wrong"},
+      "expectedStatus": 400,
       "bodyMatcher": "partial"
     },
     {
-      "name": "Login instructor",
-      "method": "POST",
+      "name": "OPTIONS CORS",
+      "method": "OPTIONS",
       "path": "/",
-      "body": {"action": "login", "full_name": "Тест Тестов", "phone": "+70000000099"},
       "expectedStatus": 200,
-      "expectedBody": {"success": true},
       "bodyMatcher": "partial"
     }
   ]
